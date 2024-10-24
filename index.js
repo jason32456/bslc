@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const { Client, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 
-dotenv.config();  // Using .env file
+dotenv.config();  
 
 const token = process.env.DISCORD_TOKEN;
 
@@ -17,7 +17,7 @@ client.on("interactionCreate", async (interaction) => {
     if (interaction.commandName === 'rules') {
         const embed = new EmbedBuilder()
             .setTitle("**RULES📕**")
-            .setDescription("**Peraturan yang mohon diikuti @everyone**\n\u200B")  // '\u200B' adds a space between title and the first rule
+            .setDescription("**Peraturan yang mohon diikuti @everyone**\n\u200B")  
             .setColor(0x50C878)
             .setThumbnail("https://raw.githubusercontent.com/jason32456/images/main/BSLC-logo.jpg");
 
@@ -35,7 +35,7 @@ client.on("interactionCreate", async (interaction) => {
             embed.addFields({ name: "\u200B", value: rule, inline: false });
         });
 
-        embed.addFields({ name: "\u200B", value: "\n\u200B" })  // Adds a blank line before the footer
+        embed.addFields({ name: "\u200B", value: "\n\u200B" }) 
             .setFooter({ text: "These rules are subject to change. Last updated: March 12, 2024" });
 
         await interaction.reply({ embeds: [embed] });
