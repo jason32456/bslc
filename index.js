@@ -4,11 +4,37 @@ const { Client, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js'
 dotenv.config();  
 
 const token = process.env.DISCORD_TOKEN;
+const channelId = process.env.WELCOME_CHANNEL_ID;
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+    ],
+});
 
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+});
+
+client.on('guildMemberAdd', (member) => {
+    const welcomeChannelId = channelId; 
+    const welcomeChannel = member.guild.channels.cache.get(welcomeChannelId);
+
+    if (welcomeChannel) {
+        
+        const welcomeEmbed = new EmbedBuilder()
+            .setColor(0x50C878)  
+            .setTitle('Welcome to the BSLC📚 Server! 🎉, where we make learning fun🙌')
+            .setDescription(`Hello, ${member}! We're so glad to have you here. Feel free to introduce yourself and join the fun!`)
+            .setThumbnail(member.user.displayAvatarURL())  
+            .setFooter({ text: `Welcome to the server, ${member.user.tag}` });
+
+        welcomeChannel.send({ embeds: [welcomeEmbed] });
+    } else {
+        console.log("Welcome channel not found.");
+    }
 });
 
 client.on("interactionCreate", async (interaction) => {
