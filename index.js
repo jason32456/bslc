@@ -48,13 +48,15 @@ client.on("interactionCreate", async (interaction) => {
             .setThumbnail("https://raw.githubusercontent.com/jason32456/images/main/BSLC-logo.jpg");
 
         const rules_list = [
-            "**1.** Server BSLC dikhususkan untuk semua elemen Nindya dan Mentor/Mentee Periode 2023/2024.",
-            "**2.** Wajib menggunakan nama asli sebagai nickname di server.",
+            "**1.** Server BSLC ini terbuka untuk seluruh mahasiswa/i BINUS University All Region, Angkatan, dan Fakultas.",
+            "**2.** Temen-temen bisa rename server profile menggunakan Nama Asli atau Nickname kalian.",
             "**3.** Mengedepankan prinsip kekeluargaan.",
             "**4.** Saling menghargai satu sama lain tanpa kompromi.",
             "**5.** Semua adalah teman dan saudara tanpa memandang sebelah mata.",
-            "**6.** Menjaga kenyamanan sesama (menjaga privasi orang lain, menghargai sesama, dll).",
-            "**7.** Jika terdapat kekeliruan antar sesama, diskusikan dengan kepala dingin."
+            "**6.** Jika terdapat kekeliruan antar sesama, diskusikan dengan kepala dingin.",
+            "**7.** Kita disini bersama-sama belajar, sharing, dan bercanda bersama dengan tetap sopan satu terhadap yang lain.",
+            "**8.** Jangan mengganggap diri superioritas, tetap rendah hati, dan saling support satu sama lain.",
+            "**9.** Last but not least, always remember: Learning is Fun!"
         ];
 
         rules_list.forEach((rule) => {
