@@ -6,6 +6,8 @@ dotenv.config();
 const token = process.env.DISCORD_TOKEN;
 const channelId = process.env.WELCOME_CHANNEL_ID;
 
+const channelMention = `<#${channelId}>`;
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -67,6 +69,24 @@ client.on("interactionCreate", async (interaction) => {
             .setFooter({ text: "These rules are subject to change. Last updated: March 12, 2024" });
 
         await interaction.reply({ embeds: [embed] });
+    } else if (interaction.commandName === 'guidelines') {
+        const embed = new EmbedBuilder()
+            .setColor(0x50C878)
+            .setTitle('Server Guidelines')
+            .setThumbnail("https://raw.githubusercontent.com/jason32456/images/main/BSLC-logo.jpg")
+            .addFields(
+                { name: '1. Channel Rules', value: 'Baca aturan di <#1297102928590409799>' },
+                { name: '2. Category BSLC', value: 'Semua informasi tentang BSLC, mulai dari Responsi BSLC, Seminar, Workshop, Partnership, dan Website BSLC' },
+                { name: '3. bot-command', value: 'Untuk menuliskan prompt bot yang digunakan' },
+                { name: '4. Voice Channel', value: 'Bebas digunakan' },
+                { name: '5. Learning Hub', value: 'Jika ada yang ingin belajar bareng, diskusi, sharing materi dll bisa di sana' },
+                { name: '6. BSLC Forum', value: 'Kalau ada yang punya Pertanyaan dll bisa ditanya aja di forum' },
+                { name: '7. Chillin Hub', value: 'Bebas mau chat untuk cari temen dan sosialisasi sesuai category channel-nya' },
+                { name: '8. Jangan lupa pilih role', value: 'Pilih role (Angkatan, Region, dan Fakultas)' }
+            )
+            .setFooter({ text: 'Follow these guidelines to maintain a great community experience!' });
+
+        await interaction.reply({ embeds: [embed], ephemeral: false });
     }
 });
 

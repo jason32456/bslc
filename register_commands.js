@@ -16,9 +16,12 @@ const slashRegister = async () => {
             {
                 body: [
                     new SlashCommandBuilder()
-                    .setName('rules')
-                    .setDescription('send rules')
-                ]
+                        .setName('rules')
+                        .setDescription('send rules'),
+                    new SlashCommandBuilder()
+                        .setName('guidelines')
+                        .setDescription('send guidelines')
+                ]                
             }
         );
         console.log('Slash command registered successfully!');
